@@ -8,7 +8,8 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
+    timeout-minutes: 720
 
     steps:
     - uses: actions/checkout@v2
@@ -27,10 +28,17 @@ jobs:
       if: ${{ env.PUSH_TOKEN != '' }}
       run: |
         echo "PUSH_TOKEN=${{ secrets.PUSH_TOKEN }}" >> $GITHUB_ENV
-        git config --global user.email "aoeiuv020@gmail.com"
-        git config --global user.name "AoEiuV020"
+        git config --global user.email "wanluoliang@126.com"
+        git config --global user.name "wankaiming"
 
+    - uses: actions/setup-java@v3
+      with:
+        distribution: 'adopt' # See 'Supported distributions' for available options
+        java-version: '8'
 
+    - run: lscpu && free -m && df -h
+    - run: java -version 
+    - run: sudo apt install ninja-build
     - run: $ROOT/script/download_ccache.sh
     - run: $ROOT/script/create_ccache_config.sh
     - run: $ROOT/script/maximize_build_space.sh
