@@ -29,9 +29,6 @@ sudo rm -f /mnt/swapfile
 git clone --depth=1 https://chromium.googlesource.com/chromium/tools/depot_tools.git
 export DEPOT_TOOLS_DIR=$PWD/depot_tools
 export PATH=$DEPOT_TOOLS_DIR:$DEPOT_TOOLS_DIR/python2_bin:$DEPOT_TOOLS_DIR/python_bin:$PATH
-echo "$DEPOT_TOOLS_DIR" >> $GITHUB_PATH
-echo "$DEPOT_TOOLS_DIR/python2_bin" >> $GITHUB_PATH
-echo "$DEPOT_TOOLS_DIR/python_bin" >> $GITHUB_PATH
 
 
 git clone --depth 1 "https://github.com/wankaiming/dependencies.git" .cipd
@@ -70,4 +67,9 @@ sudo chmod 600 /swapfile
 sudo mkswap /swapfile
 sudo swapon /swapfile
 
-ninja -C out/arm64/ -j 8  base && ninja -C out/arm64/ -j 8  chrome_java && ninja -C out/arm64/ -j 8  components/guest_view/renderer && ninja -C out/arm64/ -j 8  chrome/gpu && ninja -C out/arm64/ -j 8  components/version_info && ninja -C out/arm64/ -j 8  ui/base && ninja -C out/arm64/ -j 8  chrome/browser:resources && ninja -C out/arm64/ -j 8  chrome/browser/ui && ninja -C out/arm64/ -j 8  chrome/browser && ninja -C out/arm64/ -j 8  chrome/common && ninja -C out/arm64/ -j 8  chrome/renderer && ninja -C out/arm64/ -j 8  extensions && ninja -C out/arm64/ -j 8  services && ninja -C out/arm64/ -j 8  v8 && ninja -C out/arm64/ -j 8  chrome_public_apk
+ninja -C out/arm64/ -j 8  base && ninja -C out/arm64/ -j 8  chrome_java && ninja -C out/arm64/ -j 8  components/guest_view/renderer 
+ninja -C out/arm64/ -j 8  chrome/gpu && ninja -C out/arm64/ -j 8  components/version_info && ninja -C out/arm64/ -j 8  ui/base 
+ninja -C out/arm64/ -j 8  chrome/browser:resources && ninja -C out/arm64/ -j 8  chrome/browser/ui 
+ninja -C out/arm64/ -j 8  chrome/browser && ninja -C out/arm64/ -j 8  chrome/common && ninja -C out/arm64/ -j 8  chrome/renderer 
+ninja -C out/arm64/ -j 8  extensions && ninja -C out/arm64/ -j 8  services && ninja -C out/arm64/ -j 8  v8 
+ninja -C out/arm64/ -j 4  chrome_public_apk
