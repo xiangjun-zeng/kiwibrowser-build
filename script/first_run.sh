@@ -1,3 +1,10 @@
+git config --global http.proxy 'socks5://192.168.31.84:1080' 
+git config --global https.proxy 'socks5://192.168.31.84:1080'
+
+export proxy="http://192.168.31.84:1081"
+export http_proxy=$proxy
+export https_proxy=$proxy
+
 echo "CC=ccache clang -Qunused-arguments"  
 echo "CXX=ccache clang++ -Qunused-arguments"  
 echo "START_TIME=$(date '+%s')"  
