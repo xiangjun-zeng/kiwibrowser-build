@@ -1,5 +1,5 @@
 #!/bin/sh
-git clone --depth=1 https://chromium.googlesource.com/chromium/tools/depot_tools.git
+git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
 cd depot_tools
 git checkout 39bc04eb9
 cd ..
