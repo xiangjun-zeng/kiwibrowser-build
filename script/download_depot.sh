@@ -8,3 +8,4 @@ export PATH=$DEPOT_TOOLS_DIR:$DEPOT_TOOLS_DIR/python2_bin:$DEPOT_TOOLS_DIR/pytho
 echo "$DEPOT_TOOLS_DIR" >> $GITHUB_PATH
 echo "$DEPOT_TOOLS_DIR/python2_bin" >> $GITHUB_PATH
 echo "$DEPOT_TOOLS_DIR/python_bin" >> $GITHUB_PATH
+export DEPOT_TOOLS_UPDATE=0
