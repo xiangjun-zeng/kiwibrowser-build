@@ -15,7 +15,7 @@ jobs:
         run: |
           rm -rf ./out    # 删除整个输出目录，根据实际情况进行调整
           rm -rf ./logs   # 删除日志文件目录，如果有的话
-          rm -rf /home/runner/work/*
+          ls -l /home/runner/work/
           
       # Optionally, you can confirm disk space after cleaning
       - name: Check disk space
