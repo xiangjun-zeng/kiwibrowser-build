@@ -1,4 +1,9 @@
 #!/bin/sh
+sudo rm -rf /usr/share/dotnet
+sudo rm -rf /opt/ghc
+sudo rm -rf "/usr/local/share/boost"
+sudo rm -rf "$AGENT_TOOLSDIRECTORY"
+
 sudo apt-get update
 sudo apt-get install -y python openjdk-8-jdk-headless libncurses5 ccache
 sudo update-java-alternatives --set java-1.8.0-openjdk-amd64
