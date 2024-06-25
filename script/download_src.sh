@@ -7,6 +7,11 @@ sudo rm -rf "$AGENT_TOOLSDIRECTORY"
 sudo apt-get update
 sudo apt-get install -y python openjdk-8-jdk-headless libncurses5 ccache
 sudo update-java-alternatives --set java-1.8.0-openjdk-amd64
+
+# Set JAVA_HOME environment variable
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+echo "export JAVA_HOME=$JAVA_HOME" >> $GITHUB_ENV
+
 git clone --depth 1 "https://github.com/wankaiming/kiwibrowser-src.git" src
 cd "$ROOT/src"
 # curl "https://omahaproxy.appspot.com/all" | grep -Fi "android,stable" | cut -f3 -d"," | awk '{split($0,a,"."); print "MAJOR=" a[1] "\nMINOR=" a[2] "\nBUILD=" a[3] "\nPATCH=" a[4]}' > chrome/VERSION
