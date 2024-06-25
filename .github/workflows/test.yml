@@ -15,7 +15,6 @@ jobs:
         run: |
           rm -rf ./out    # 删除整个输出目录，根据实际情况进行调整
           rm -rf ./logs   # 删除日志文件目录，如果有的话
-          rm -rf /home/runner/work/*   # 删除日志文件目录，如果有的话
           # 添加其他需要清理的目录或文件
 
       # Add additional steps if you need to clean Docker containers or images
