@@ -1,26 +1,6 @@
-name: Clean Up GitHub Actions Workspace
-
-on:
-  workflow_dispatch:  # 手动触发，也可以根据实际情况改成其他触发方式
-
-jobs:
-  cleanup:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code/home/runner/runners/2.317.0/
-        uses: actions/checkout@v2
-
-      # Add steps to clean up all directories and files you want to delete
-      - name: Clean up directories
-        run: |
-          rm -rf ./out    # 删除整个输出目录，根据实际情况进行调整
-          rm -rf ./logs   # 删除日志文件目录，如果有的话
-          rm -rf /home/runner/runners/2.317.0/_diag/*
-          ls -l /home/runner/runners/2.317.0/_diag/
-          rm -rf /home/runner/runners/2.317.0/_temp/*
-          ls -l /home/runner/runners/2.317.0/_temp/
-          
-          
-      # Optionally, you can confirm disk space after cleaning
-      - name: Check disk space
-        run: df -h
+- name: 设置 JDK 8
+  uses: actions/setup-java@v2
+  with:
+    java-version: 1.8
+- name: 设置 JAVA_HOME
+  run: echo "JAVA_HOME=$(echo $JAVA_HOME)" >> $GITHUB_ENV
