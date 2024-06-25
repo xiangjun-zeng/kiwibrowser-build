@@ -37,18 +37,27 @@ sudo chmod 600 /swapfile
 sudo mkswap /swapfile
 sudo swapon /swapfile
 
-ninja -C out/arm64/ -j 8 base 
-ninja -C out/arm64/ -j 8 chrome_java 
-ninja -C out/arm64/ -j 8 components/guest_view/renderer 
-ninja -C out/arm64/ -j 8 chrome/gpu 
-ninja -C out/arm64/ -j 8 components/version_info 
-ninja -C out/arm64/ -j 8 ui/base 
-ninja -C out/arm64/ -j 8 chrome/browser:resources 
-ninja -C out/arm64/ -j 8 chrome/browser/ui 
-ninja -C out/arm64/ -j 8 chrome/browser 
-ninja -C out/arm64/ -j 8 chrome/common 
-ninja -C out/arm64/ -j 8 chrome/renderer 
-ninja -C out/arm64/ -j 8 extensions 
-ninja -C out/arm64/ -j 8 services 
-ninja -C out/arm64/ -j 8 v8 
-ninja -C out/arm64/ -j 4 chrome_public_apk
+function compile_and_cleanup() {
+    target=$1
+    echo "Building $target ..."
+    ninja -C out/arm64/ -j 8 $target
+    echo "Cleaning up $target ..."
+    rm -rf out/arm64/$target
+}
+
+# 编译各个目标并在完成后删除
+compile_and_cleanup base
+compile_and_cleanup chrome_java
+compile_and_cleanup components/guest_view/renderer
+compile_and_cleanup chrome/gpu
+compile_and_cleanup components/version_info
+compile_and_cleanup ui/base
+compile_and_cleanup chrome/browser:resources
+compile_and_cleanup chrome/browser/ui
+compile_and_cleanup chrome/browser
+compile_and_cleanup chrome/common
+compile_and_cleanup chrome/renderer
+compile_and_cleanup extensions
+compile_and_cleanup services
+compile_and_cleanup v8
+compile_and_cleanup chrome_public_apk
