@@ -43,6 +43,8 @@ function compile_and_cleanup() {
     ninja -C out/arm64/ -j 8 $target
     echo "Cleaning up $target ..."
     rm -rf out/arm64/$target
+    rm -rf  /home/runner/runners/2.317.0/_diag/*
+    rm -rf  /home/runner/runners/2.317.0/_temp/*
 }
 
 # 编译各个目标并在完成后删除
