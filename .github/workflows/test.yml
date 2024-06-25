@@ -1,0 +1,28 @@
+name: Clean Up GitHub Actions Workspace
+
+on:
+  workflow_dispatch:  # 手动触发，也可以根据实际情况改成其他触发方式
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Add steps to clean up all directories and files you want to delete
+      - name: Clean up directories
+        run: |
+          rm -rf ./out    # 删除整个输出目录，根据实际情况进行调整
+          rm -rf ./logs   # 删除日志文件目录，如果有的话
+          # 添加其他需要清理的目录或文件
+
+      # Add additional steps if you need to clean Docker containers or images
+      - name: Clean up Docker containers and images
+        run: |
+          docker container prune -f
+          docker image prune -af
+
+      # Optionally, you can confirm disk space after cleaning
+      - name: Check disk space
+        run: df -h
