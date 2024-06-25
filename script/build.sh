@@ -62,4 +62,8 @@ compile_and_cleanup chrome/renderer
 compile_and_cleanup extensions
 compile_and_cleanup services
 compile_and_cleanup v8
+# Set JAVA_HOME environment variable
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+echo "export JAVA_HOME=$JAVA_HOME" >> $GITHUB_ENV
+
 compile_and_cleanup chrome_public_apk
